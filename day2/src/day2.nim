@@ -1,0 +1,300 @@
+import strutils, tables, sequtils
+
+const input = """crruafyzloguvxwctqmphenbkd
+srcjafyzlcguvrwctqmphenbkd
+srijafyzlogbpxwctgmphenbkd
+zrijafyzloguvxrctqmphendkd
+srijabyzloguvowcqqmphenbkd
+srijafyzsoguvxwctbmpienbkd
+srirtfyzlognvxwctqmphenbkd
+srijafyzloguvxwctgmphenbmq
+senjafyzloguvxectqmphenbkd
+srijafyeloguvxwwtqmphembkd
+srijafyzlogurxtctqmpkenbkd
+srijafyzlkguvxictqhphenbkd
+srijafgzlogunxwctqophenbkd
+shijabyzloguvxwctqmqhenbkd
+srjoafyzloguvxwctqmphenbwd
+srijafyhloguvxwmtqmphenkkd
+srijadyzlogwvxwctqmphenbed
+brijafyzloguvmwctqmphenhkd
+smijafyzlhguvxwctqmphjnbkd
+sriqafvzloguvxwctqmpheebkd
+srijafyzloguvxwisqmpuenbkd
+mrijakyuloguvxwctqmphenbkd
+srnfafyzloguvxwctqmphgnbkd
+srijadyzloguvxwhfqmphenbkd
+srijafhzloguvxwctdmlhenbkd
+srijafyzloguvxwcsqmphykbkd
+srijafyzlogwvxwatqmphhnbkd
+srijafyzlozqvxwctqmphenbku
+srijafyzloguvxwcbamphenbgd
+srijafyzlfguvxwctqmphzybkd
+srijafyzloguqxwetqmphenkkd
+srijafyylogubxwttqmphenbkd
+srijafyzloguvxzctadphenbkd
+srijafyzloguoxwhtqmchenbkd
+srijafyzloguvxwcvqmzhenbko
+srijnfyzloguvxwctqmchenjkd
+srijaryzloggvxwctqzphenbkd
+srijafhzleguvxwcxqmphenbkd
+ssijafyzllguvxfctqmphenbkd
+srijafyzloguvxdctqmfhenbcd
+srijafyzloguvxfctqmplynbkd
+srijaftzlogavxwcrqmphenbkd
+sriwaoyzloguvxwctqmphenbtd
+srijahyzlogunxwctqmphenbvd
+srjjafyzloguzxwctumphenbkd
+nrijafyzlxguvxwctqmphanbkd
+srijafezlqguyxwctqmphenbkd
+srijafygloguvxwjtqcphenbkd
+erijafyzloguvxoctqmnhenbkd
+ssijafyzllguvxwbtqmphenbkd
+sriaafyzloguvxwctqqphenbkv
+frijafyzloguvswctwmphenbkd
+srijafyzyogkvxwctqmprenbkd
+syijafyzuoguvxwctqmkhenbkd
+srijafyzloganxwctqmphenbkf
+srijafyzloguvxwftqmxhenbkq
+srijafyflogxvxwctqmghenbkd
+srijafyzsoguvxwctqmpjenwkd
+srujafylloguvxwctqmphenckd
+srijafyzlpzuvxwctqmphenbud
+srijafyzlogfvxwctqmhhenbwd
+srijafjzlogusxwctqmphepbkd
+srijlfyzloguvxwctqfphenzkd
+srijafyzlogwvxwctqyphenbqd
+srijafyzloluvxwctqtphenukd
+srizafyzlowuvxwctqmphqnbkd
+sritafkzlkguvxwctqmphenbkd
+sbijafdzloguvxgctqmphenbkd
+crijafyeloguvxwctqmpsenbkd
+srijafyvlogulxwctqmphenbkk
+srijafyologuvxwctqmehegbkd
+siijafyzloguvxwctjmphenbmd
+srijafyzlupuvxwctqmpheabkd
+srijafyzlogumxwctqqphanbkd
+srijxfyzlogujxwcqqmphenbkd
+irijafizeoguvxwctqmphenbkd
+sgijafyzloguvtwctqmpfenbkd
+srijzfyzloguvmwctnmphenbkd
+srijafyzwohuvxwctqmthenbkd
+srijafyzlhguvxoctqwphenbkd
+srgjafyplogxvxwctqmphenbkd
+srijafyqlogovxwctqzphenbkd
+srijafjzloguvlnvtqmphenbkd
+srijafyzooguvxwctqmphenvud
+srijafyzgoguvxwctumphgnbkd
+srijaffzloguvxwdqqmphenbkd
+srijafyzlogugxwctqxphenbkr
+srijafyzlogutxwctqmmcenbkd
+srifafyzlhguwxwctqmphenbkd
+mrimajyzloguvxwctqmphenbkd
+sriyafyzloguvxwcthmphejbkd
+srieakyzlokuvxwctqmphenbkd
+srisafyzloguhxwctqmphecbkd
+srijanyzloguvxcctqmxhenbkd
+srijafyzypguvxwctqmqhenbkd
+sryjtfyzlvguvxwctqmphenbkd
+srijafyzlsguvxwctqmqfenbkd
+srijafyzlogudxwbtqwphenbkd
+srijysyzloguvxwctqmpvenbkd
+srijafyzloggvxwjtqmphegbkd
+srijgfyzloguvxwctqmbhdnbkd
+ssijufyzloguvawctqmphenbkd
+skojafyzloguvxwctqmphenbnd
+srijafylloguvxwcqqmpienbkd
+trioafyzloguvqwctqmphenbkd
+srijafydloguvxwctqmpzjnbkd
+saijafvzloguvxwcqqmphenbkd
+srhjapyzloguvxwctqmbhenbkd
+srijafyzlfguvxwcsqmpwenbkd
+shijafyzboguvxwctqmphenbmd
+srizafysloguvxwrtqmphenbkd
+srijafyzloguvxwciqmwhenbkj
+qrijafyzloduvxwctqmphenbko
+srijefyuloguvxwctqmphenbed
+srijafyzlobuvxwctqmphenhbd
+srijafyzloxuvxwctqmpheabkq
+srijafyzloguvrwctqmghenkkd
+sfisafywloguvxwctqmphenbkd
+srgjafyzlogurxwctqmphenbkp
+srijafhzloguvxwcjqmphenhkd
+srijafyylogufxwrtqmphenbkd
+srijafyzvoguvxwzkqmphenbkd
+sqijafyzloguvxwctqmpheqbxd
+srijafyvloguvxwctqzpherbkd
+srijufyzloguvxlcsqmphenbkd
+srijafykloguvxlccqmphenbkd
+srijafyzloguexwcrqmphenzkd
+sridifyzloguyxwctqmphenbkd
+srijafyzlogfvxwctqlphenbkl
+srijafyzlodqdxwctqmphenbkd
+srijafyzloruvxactqmphenekd
+grijafyzloguvxpctmmphenbkd
+srsjakyzloguvxwctqmphvnbkd
+srikafyvloguvxwrtqmphenbkd
+srijafyzloguvxwctqjpserbkd
+jrijafyzloguvxwctqmpgesbkd
+swijafyzluguvxwctqmfhenbkd
+srijanynlogovxwctqmphenbkd
+jrijafyzloguvxwctymphrnbkd
+srinafyzloguvewctqmphenbzd
+srijakyzloguvxwctqmphcnbka
+srijafyhlobuvxwctqmphenbka
+srijafyzcogusxwctqmphwnbkd
+srijavyzlosuvxwctqmphjnbkd
+orijafyzxoguvxwcnqmphenbkd
+srijafyzlogcvxwvtqmthenbkd
+srijapyzloauvxwctqmphenvkd
+srijaflzloguhxwctqmphenbwd
+smijafyzlonuvxwctqmphenbkw
+jrijafyzloguvxwclqmnhenbkd
+srijaqyzloguvqwctqmphenskd
+srijasyzloguvxwctqmvhenbku
+crijtfyzloguvxwctqmthenbkd
+srrkafyzvoguvxwctqmphenbkd
+srijatyzloguvewctqmphenbld
+srfjafyyloguvnwctqmphenbkd
+srijafyzloguvxwctqjpbenbkt
+hrijafyzooguvxwctqmphenbld
+srijafbzlogscxwctqmphenbkd
+srinafyzlogxvxwctqqphenbkd
+slijafyzloglvxwctqmphenbdd
+srijafyzlogjvxwcsqmphenbld
+sryjcfyzloguvewctqmphenbkd
+srijafyzloguexwctqmohknbkd
+jaijafyzlogevxwctqmphenbkd
+srijafbzlogavxwctqmphenbki
+srijafozlogpvxwctqmphgnbkd
+srijdfyzloguvxwczqmphenbkm
+srijafyzlobuvxwctqmphxndkd
+mrijifyzlhguvxwctqmphenbkd
+srijafyzloguvxbctumphjnbkd
+srijafyzloyuvxwptqmphlnbkd
+arijafyzloguvxwcsqmohenbkd
+srijaftzioguvxwttqmphenbkd
+srijafyzlqsuvxwctqmphxnbkd
+srijafyzioguvxwctqnphetbkd
+prijafbzloguvxdctqmphenbkd
+srijaeyzlnguvxwmtqmphenbkd
+srijofyzloguvqwctqmphonbkd
+srixaryzpoguvxwctqmphenbkd
+srijafyzlowuvxwcwhmphenbkd
+srijafydloguvxwctqmptenikd
+srijqfyzlogtvfwctqmphenbkd
+srijafyzloguvxlctqmpvenbgd
+srijafyzlbguvxwjtqgphenbkd
+srijafyzlohuqxwctqmphenbka
+srijafyzroguvxictqmphynbkd
+srijafyzloguvxdctjmphenjkd
+srijaoczloguvxwctqmphenbjd
+srajafhzloguvxwctqmphenbke
+srijofyzloduvxwctqmphanbkd
+srijafytloguvxwmtnmphenbkd
+srijafyzuoguvxwceqmpgenbkd
+rrijafyzloyuvxwctqmphlnbkd
+srljafyzloguvxictqmohenbkd
+srijafyzlogulxwcrqrphenbkd
+srajafyzloguvxwctqmphanbke
+srijafyzlhguvxwxtqmpheabkd
+sxijafyzloggwxwctqmphenbkd
+srijafyultguvxwctqmphinbkd
+srijafyzloguvtwctqmfhvnbkd
+srijafwzloruvxwctquphenbkd
+srbjafyzxoguuxwctqmphenbkd
+erijafyzlxguvxbctqmphenbkd
+srijagyzlojubxwctqmphenbkd
+srijafyzloguvxwdtqmchenakd
+srijafkzlogukxwctqiphenbkd
+mridafyzloguvxwctqmphenrkd
+szqjafyzloguvxwctqmpheibkd
+srijahyzloguvxwctcmphenekd
+srijafyzloguvxwczpuphenbkd
+srijafyzcoguvfwctqmphenbkq
+qriiafyzloguvxwctqmpheebkd
+srijpfyzloguvxlctqmphenokd
+srijzfyzlotuvxwcjqmphenbkd
+srinafyqloguvxwctfmphenbkd
+srijafyzlogjvxpltqmphenbkd
+srijafyzlotuvxwutqmphenbtd
+sridafyzloguvxwctqmpyenokd
+srxjafyzqogyvxwctqmphenbkd
+ssijafyzzoguvxwctqmphenbad
+srijafrzloguvxwctqmphekpkd
+srijafyzlfgrvxactqmphenbkd
+srijafyzroguvxwttqmphekbkd
+srijefyzloguvxwctqmpqenbrd
+srijefycloguvxwctqmchenbkd
+srzjafyzloguvxwcqqmphanbkd
+srijauyzlhguvxwctqmphenbgd
+srijafyzloguvmwvnqmphenbkd
+srihafyzloguvlwotqmphenbkd
+srigafyzloguvxwctqmphennsd
+sriuafzzloguvxwcuqmphenbkd
+srijavuzllguvxwctqmphenbkd
+srijafjzloguvlnctqmphenbkd
+lrirafyzloguvxwctqmphenbld
+soijarxzloguvxwctqmphenbkd
+srijapyzlnguvxwctqmdhenbkd
+srijafyzkogujxmctqmphenbkd
+srijafuzloguvxwcsqvphenbkd
+srijagyzzoguvxwctqmpvenbkd
+srijafyzlovuvxwctqmrhenbxd
+srijafyzqoguvxwctwmpienbkd
+sxijafyzloguvxwutqmphenlkd
+srijafyzlhgzvxwctqmphqnbkd
+srijajyzloguvxwcbwmphenbkd
+srijazyzloguvxwhtqmphenbkx
+srgjafyzloguvvwctqmphdnbkd
+rrivafyzloguvxjctqmphenbkd
+srijifyzdoguvxwctqmphenbka
+hrijafyzloguvxectqmpheybkd"""
+
+const lines = input.splitLines()
+
+# -- Part one
+
+var
+    twoCount = 0
+    threeCount = 0
+
+for line in lines:
+    var 
+        letters = initTable[char, int]()
+        foundTwo = false
+        foundThree = false
+
+    for letter in line:
+        if not letters.hasKey(letter):
+            letters[letter] = 1
+        else:
+            letters[letter] = letters[letter] + 1
+    
+    for value in letters.values:
+        if value == 2 and not foundTwo:
+            twoCount = twoCount + 1
+            foundTwo = true
+        if value == 3 and not foundThree:
+            threeCount = threeCount + 1
+            foundThree = true
+
+echo twoCount * threeCount
+
+# -- Part two
+const linesInSeq = lines.map(proc(line: string): seq[char] = toSeq(line.items))
+
+
+var smallest = "" 
+var smallestDistance = 9999
+for word in lines:
+    for word2 in lines:
+        let distance = editDistance(word, word2)
+        if distance < smallestDistance and distance != 0:
+            smallest = ""
+            smallestDistance = distance
+            for index, letter1 in word:
+                if letter1 == word2[index]:
+                    smallest = smallest & letter1
+                
+echo smallest
