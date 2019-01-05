@@ -6,7 +6,7 @@
         {
             "label": "Build",
             "type": "shell",
-            "command": "cd day19 && nimble build --opt:speed  && echo 'starting' && ./day19",
+            "command": "nimble build --opt:speed && ./day19",
             "group": {
                 "kind": "build",
                 "isDefault": true
